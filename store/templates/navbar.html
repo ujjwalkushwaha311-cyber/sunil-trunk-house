@@ -17,7 +17,7 @@
             <div class="navbar-search">
                 <form method="GET" action="{% url 'products' %}" class="navbar-search-form">
                     <div class="search-input-group">
-                        <i class="fas fa-search search-icon" aria-hidden="true"></i>
+
                         <input
                             type="text"
                             name="search"
@@ -27,7 +27,7 @@
                         >
                     </div>
                     <button type="submit" class="search-submit" aria-label="Search">
-                        <i class="fas fa-arrow-right"></i>
+                        <i class="fas fa-search" aria-hidden="true"></i>
                     </button>
                 </form>
             </div>
@@ -39,25 +39,25 @@
                     <li class="nav-item dropdown">
                         <a href="{% url 'products' %}" class="{% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'almirah' or request.resolver_match.url_name == 'trunk' or request.resolver_match.url_name == 'coller' or request.resolver_match.url_name == 'stand' %}active{% endif %}">Products <i class="fas fa-chevron-down dropdown-caret"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="almirah.html">Almirah</a></li>
-                            <li><a href="trunk.html">Trunk Box</a></li>
-                            <li><a href="cooler.html">Cooler</a></li>
-                            <li><a href="stand.html">Steel Stand</a></li>
+                            <li><a href="{% url 'almirah' %}">Almirah</a></li>
+                            <li><a href="{% url 'trunk' %}">Trunk Box</a></li>
+                            <li><a href="{% url 'coller' %}">Cooler</a></li>
+                            <li><a href="{% url 'stand' %}">Steel Stand</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' or request.resolver_match.url_name == 'authenticity' or request.resolver_match.url_name == 'contact' %}active{% endif %}">Company <i class="fas fa-chevron-down dropdown-caret"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="authenticity.html">Authenticity</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="{% url 'authenticity' %}">Authenticity</a></li>
+                            <li><a href="{% url 'contact' %}">Contact</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="{% url 'track_order' %}" class="{% if request.resolver_match.url_name == 'track_order' or request.resolver_match.url_name == 'track_complain' %}active{% endif %}">Track <i class="fas fa-chevron-down dropdown-caret"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="complain_tracker.html">Track Complaint</a></li>
-                            <li><a href="order_track.html">Track Order</a></li>
+                            <li><a href="{% url 'track_complain' %}">Track Complaint</a></li>
+                            <li><a href="{% url 'track_order' %}">Track Order</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -145,6 +145,14 @@
         });
 
         document.addEventListener('click', function(event) {
+            var dropdownToggle = event.target.closest('.nav-item.dropdown > a');
+            if (dropdownToggle && window.innerWidth <= 720) {
+                event.preventDefault();
+                var dropdown = dropdownToggle.parentElement;
+                dropdown.classList.toggle('open');
+                return;
+            }
+
             var cartIcon = event.target.closest('.cart-icon-btn');
             if (!cartIcon) {
                 return;

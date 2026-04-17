@@ -27,7 +27,8 @@ def home(request):
         search_results = Product.objects.filter(
             Q(name__icontains=search_query) |
             Q(tagline__icontains=search_query) |
-            Q(description__icontains=search_query)
+            Q(description__icontains=search_query) |
+            Q(category__icontains=search_query)
         ).distinct()
 
         if not search_results.exists():
@@ -178,7 +179,7 @@ def get_cart_ids(request):
 def cart(request):
     cart_ids = get_cart_ids(request)
     cart_items = Product.objects.filter(id__in=cart_ids)
-    cart_total = sum(item.mrp if item.mrp else item.price for item in cart_items)
+    cart_total = sum(item.price for item in cart_items)
     return render(request, 'cart.html', {
         'cart_items': cart_items,
         'cart_total': cart_total,

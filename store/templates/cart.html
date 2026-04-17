@@ -48,7 +48,14 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="text-center">₹{{ product.mrp|default:product.price }}</td>
+                                    <td class="text-center">
+                                        <div class="cart-price-wrap">
+                                            <span class="cart-current-price">₹{{ product.price }}</span>
+                                            {% if product.discount_percent and product.mrp and product.mrp > product.price %}
+                                                <span class="cart-old-price"><del>₹{{ product.mrp }}</del></span>
+                                            {% endif %}
+                                        </div>
+                                    </td>
                                     <td class="text-center">
                                         <form action="{% url 'remove_from_cart' %}" method="post">
                                             {% csrf_token %}

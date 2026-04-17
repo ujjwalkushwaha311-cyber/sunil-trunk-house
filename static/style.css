@@ -112,66 +112,71 @@ header {
     margin: 0 10px;
 }
 
-.navbar-search-form {
+.navbar-search .navbar-search-form {
     display: flex;
     align-items: stretch;
     width: 100%;
     background: #ffffff;
     border: 1px solid rgba(15, 23, 42, 0.12);
-    border-radius: 25px;
+    border-radius: 24px;
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
     overflow: hidden;
-    min-height: 48px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
 }
 
-.search-input-group {
+.navbar-search .search-input-group {
     position: relative;
     flex: 1;
     display: flex;
     align-items: center;
+    height: 48px; /* Force height */
 }
 
-.search-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #64748b;
+.navbar-search .search-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 16px;
+    color: #94a3b8;
     font-size: 1rem;
-    pointer-events: none;
+    min-width: 24px;
 }
 
 .navbar-search input {
     width: 100%;
     border: none;
     outline: none;
-    padding: 0 16px 0 44px;
+    padding: 0 20px;
     font-size: 0.95rem;
     color: #0f172a;
     background: transparent;
-    min-height: 48px;
     height: 100%;
+    display: block;
 }
 
 .navbar-search input::placeholder {
     color: #94a3b8;
 }
 
-.search-submit {
+.navbar-search .search-submit {
     border: none;
     outline: none;
     background: #0f62ff;
     color: #ffffff;
     width: 52px;
     min-width: 52px;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    height: 100%;
+    transition: all 0.2s ease;
+    height: 48px; /* Force height */
     padding: 0;
-    border-radius: 0 24px 24px 0;
+    margin: 0;
+    border-radius: 0;
+    vertical-align: top;
 }
 
 .search-submit i {
@@ -686,11 +691,16 @@ header {
 }
 
 .dropdown:hover .dropdown-menu,
-.dropdown .dropdown-menu:hover {
+.dropdown .dropdown-menu:hover,
+.dropdown.open .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
     pointer-events: auto;
+}
+
+.dropdown.open > a .dropdown-caret {
+    transform: rotate(180deg);
 }
 
 .dropdown-caret {
