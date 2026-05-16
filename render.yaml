@@ -2,7 +2,7 @@ services:
   - type: web
     name: sunil-trunk-house
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --upgrade pip && pip install --force-reinstall --no-cache-dir -r requirements.txt
     startCommand: gunicorn --chdir . myproject.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
