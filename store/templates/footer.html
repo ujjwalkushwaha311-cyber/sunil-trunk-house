@@ -1,24 +1,30 @@
 <footer class="site-footer">
     <div class="footer-top">
+        <div class="container">
         <div class="footer-brand">
             <h3>Sunil Trunk House</h3>
             <p>Premium steel furniture and storage solutions built for lasting strength, modern style, and trusted performance.</p>
         </div>
         <div class="footer-links">
             <h4>Quick Links</h4>
-            <a href="{% url 'home' %}"><i class="fas fa-house nav-icon"></i> Home</a>
-            <a href="{% url 'products' %}"><i class="fas fa-box nav-icon"></i> Products</a>
-            <a href="{% url 'about' %}"><i class="fas fa-info-circle nav-icon"></i> About Us</a>
-            <a href="{% url 'contact' %}"><i class="fas fa-envelope nav-icon"></i> Contact</a>
+            <nav>
+                <a href="{% url 'home' %}"><span class="footer-link-icon"><i class="fa-solid fa-house"></i></span>Home</a>
+                <a href="{% url 'products' %}"><span class="footer-link-icon"><i class="fa-solid fa-box"></i></span>Products</a>
+                <a href="{% url 'about' %}"><span class="footer-link-icon"><i class="fa-solid fa-circle-info"></i></span>About Us</a>
+                <a href="{% url 'contact' %}"><span class="footer-link-icon"><i class="fa-solid fa-envelope"></i></span>Contact</a>
+            </nav>
         </div>
         <div class="footer-contact">
             <h4>Contact</h4>
-            <p><i class="fas fa-phone-alt nav-icon"></i> +91 6386569834</p>
-            <p><i class="fas fa-envelope nav-icon"></i> support@suniltrunkhouse.com</p>
-            <p><i class="fas fa-map-marker-alt nav-icon"></i> Varanasi, Uttar Pradesh</p>
+            <p><span class="footer-link-icon"><i class="fa-solid fa-phone"></i></span>+91 6386569834</p>
+            <p><span class="footer-link-icon"><i class="fa-solid fa-envelope"></i></span>support@suniltrunkhouse.com</p>
+            <p><span class="footer-link-icon"><i class="fa-solid fa-location-dot"></i></span>Varanasi, Uttar Pradesh</p>
+        </div>
         </div>
     </div>
     <div class="footer-bottom">
-        © 2026 Sunil Trunk House. All rights reserved.
+        <div class="container">
+        <p>© 2026 Sunil Trunk House. All rights reserved.</p>
+        </div>
     </div>
 </footer>

@@ -1,3 +1,4 @@
+from .models import Product
 import json
 import re
 import uuid
